@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Method method = Method();
-  AutoScrollController _autoScrollController;
+  late AutoScrollController _autoScrollController;
   final scrollDirection = Axis.vertical;
 
   bool isExpaned = true;
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     _autoScrollController.highlight(index);
   }
 
-  Widget _wrapScrollTag({int index, Widget child}) {
+  Widget _wrapScrollTag({required int index, required Widget child}) {
     return AutoScrollTag(
       key: ValueKey(index),
       controller: _autoScrollController,
@@ -431,7 +431,7 @@ class _HomePageState extends State<HomePage> {
                                           'Vendor app',
                                           'Cross platform',
                                           'iOS',
-                                          'Android'
+                                          'Android',
                                         ],
                                       ),
 
@@ -554,7 +554,7 @@ class _HomePageState extends State<HomePage> {
                                         ontab: () {},
                                         projectDesc:
                                             "A mobile app for a well-known former pakistan telecom brand called Warid that is now merged with Jazz developed using Swift iOS",
-                                        projectTitle: "All Masajid",
+                                        projectTitle: "My Warid",
                                         skills: [
                                           'iOS',
                                           'Swift',

@@ -575,7 +575,7 @@ class _MobileHomeState extends State<MobileHome> {
                 ontab: () {},
                 projectDesc:
                     "A mobile app for a well-known former pakistan telecom brand called Warid that is now merged with Jazz developed using Swift iOS",
-                projectTitle: "All Masajid",
+                projectTitle: "My Warid",
                 skills: [
                   'iOS',
                   'Swift',

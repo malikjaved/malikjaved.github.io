@@ -5,7 +5,7 @@ class AppBarTitle extends StatelessWidget {
   //final Function ontab;
 
   AppBarTitle({
-    @required this.text,
+    required this.text,
     /*@required this.ontab*/
   });
   @override

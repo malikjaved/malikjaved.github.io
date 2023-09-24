@@ -221,7 +221,7 @@ class About extends StatelessWidget {
 }
 
 class CustomImageAnimation extends StatefulWidget {
-  CustomImageAnimation({Key key}) : super(key: key);
+  CustomImageAnimation({Key? key}) : super(key: key);
 
   @override
   _CustomImageAnimationState createState() => _CustomImageAnimationState();

@@ -5,21 +5,16 @@ class FeatureProjectMobile extends StatelessWidget {
   final String imagePath;
   final String projectTitle;
   final String projectDesc;
-  final String tech1;
-  final String tech2;
-  final String tech3;
   final List<String> skills;
   final Function ontab;
 
-  FeatureProjectMobile(
-      {this.imagePath,
-      this.ontab,
-      this.projectDesc,
-      this.projectTitle,
-      this.tech1,
-      this.tech2,
-      this.skills,
-      this.tech3});
+  FeatureProjectMobile({
+    required this.imagePath,
+    required this.ontab,
+    required this.projectDesc,
+    required this.projectTitle,
+    required this.skills,
+  });
 
   @override
   Widget build(BuildContext context) {

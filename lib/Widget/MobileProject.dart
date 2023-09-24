@@ -4,7 +4,7 @@ class MobileProject extends StatelessWidget {
   final Function ontab;
   final String image;
 
-  MobileProject({this.ontab, this.image});
+  MobileProject({required this.ontab, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class MobileProject extends StatelessWidget {
 
     return Center(
       child: GestureDetector(
-        onTap: ontab,
+        onTap: () => ontab,
         child: Column(
           children: [
             Text(
