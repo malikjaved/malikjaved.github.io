@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/portfolio_data.dart';
+import '../theme/app_breakpoints.dart';
 import '../theme/app_theme.dart';
 import 'shared_widgets.dart';
 
@@ -50,47 +51,52 @@ class PortfolioNavBar extends StatelessWidget {
         ),
         child: Row(
           children: [
-            GestureDetector(
-              onTap: () => scrollController.animateTo(
-                0,
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeInOut,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    width: 36,
-                    height: 36,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      gradient: const LinearGradient(
-                        colors: [AppColors.accent, AppColors.accentLight],
+            Flexible(
+              child: GestureDetector(
+                onTap: () => scrollController.animateTo(
+                  0,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      width: 36,
+                      height: 36,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        gradient: const LinearGradient(
+                          colors: [AppColors.accent, AppColors.accentLight],
+                        ),
                       ),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        'MJ',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 13,
+                      child: const Center(
+                        child: Text(
+                          'MJ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 13,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  if (!isMobile && !isCompact) ...[
-                    const SizedBox(width: 12),
-                    const Text(
-                      'Javed Iqbal',
-                      style: TextStyle(
-                        color: AppColors.textPrimary,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15,
+                    if (!isMobile && !isCompact) ...[
+                      const SizedBox(width: 12),
+                      const Flexible(
+                        child: Text(
+                          'Javed Iqbal',
+                          style: TextStyle(
+                            color: AppColors.textPrimary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
-                    ),
+                    ],
                   ],
-                ],
+                ),
               ),
             ),
             if (!isMobile) ...[
@@ -140,24 +146,28 @@ class PortfolioScreenKeys {
 
 class _NavBarHeaderDelegate extends SliverPersistentHeaderDelegate {
   final Widget child;
+  final double extent;
 
-  _NavBarHeaderDelegate({required this.child});
+  _NavBarHeaderDelegate({
+    required this.child,
+    required this.extent,
+  });
 
   @override
-  double get minExtent => 68;
+  double get minExtent => extent;
 
   @override
-  double get maxExtent => 68;
+  double get maxExtent => extent;
 
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return child;
+    return SizedBox(height: extent, child: child);
   }
 
   @override
   bool shouldRebuild(covariant _NavBarHeaderDelegate oldDelegate) {
-    return oldDelegate.child != child;
+    return oldDelegate.child != child || oldDelegate.extent != extent;
   }
 }
 
@@ -166,9 +176,12 @@ SliverPersistentHeader pinnedNavBarHeader({
   required bool isMobile,
   required bool isCompact,
 }) {
+  final extent = isMobile ? 61.0 : 65.0;
+
   return SliverPersistentHeader(
     pinned: true,
     delegate: _NavBarHeaderDelegate(
+      extent: extent,
       child: PortfolioNavBar(
         scrollController: scrollController,
         isMobile: isMobile,
@@ -207,15 +220,19 @@ class HeroSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final useStackedLayout = isMobile || width < AppBreakpoints.stacked;
+
     return Stack(
+      clipBehavior: Clip.none,
       children: [
         Positioned(
           top: -80,
-          right: isMobile ? -60 : 0,
-          left: isMobile ? -40 : null,
+          right: useStackedLayout ? -60 : 0,
+          left: useStackedLayout ? -40 : null,
           child: Container(
-            width: isMobile ? 320 : 560,
-            height: isMobile ? 320 : 480,
+            width: useStackedLayout ? 320 : 560,
+            height: useStackedLayout ? 320 : 480,
             decoration: BoxDecoration(
               gradient: AppGradients.heroGlow,
             ),
@@ -226,7 +243,7 @@ class HeroSection extends StatelessWidget {
             horizontal: isMobile ? 20 : 48,
             vertical: isMobile ? 48 : 80,
           ),
-          child: isMobile ? _buildMobile() : _buildDesktop(),
+          child: useStackedLayout ? _buildMobile() : _buildDesktop(),
         ),
       ],
     );
@@ -234,16 +251,19 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildDesktop() {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Expanded(
           flex: 3,
           child: _buildContent(),
         ),
-        const SizedBox(width: 64),
-        Expanded(
+        const SizedBox(width: 48),
+        Flexible(
           flex: 1,
-          child: _buildProfileImage(320),
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: _buildProfileImage(280, false),
+          ),
         ),
       ],
     );
@@ -255,7 +275,7 @@ class HeroSection extends StatelessWidget {
       children: [
         _buildContent(),
         const SizedBox(height: 40),
-        Center(child: _buildProfileImage(220)),
+        Center(child: _buildProfileImage(220, true)),
       ],
     );
   }
@@ -274,6 +294,7 @@ class HeroSection extends StatelessWidget {
           child: Text(
             'Available for remote job, freelance & contract work',
             style: AppTheme.label.copyWith(fontSize: 12),
+            softWrap: true,
           ),
         ),
         const SizedBox(height: 24),
@@ -323,19 +344,31 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileImage(double width) {
-    return Container(
-      width: width / 2.0,
-      height: width * 1.25,
-      clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: AppShadows.profileImage,
-      ),
-      child: Image.asset(
-        'assets/images/pp2.jpg',
-        fit: BoxFit.cover,
-      ),
+  Widget _buildProfileImage(double width, bool isMobileLayout) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxWidth =
+            constraints.maxWidth.isFinite ? constraints.maxWidth : width;
+        final imageWidth = isMobileLayout
+            ? width.clamp(0.0, maxWidth)
+            : (width / 1.15).clamp(0.0, maxWidth);
+        final imageHeight = isMobileLayout ? imageWidth : imageWidth * 1.35;
+
+        return Container(
+          width: imageWidth,
+          height: imageHeight,
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            boxShadow: AppShadows.profileImage,
+          ),
+          child: Image.asset(
+            'assets/images/pp2.jpg',
+            fit: BoxFit.cover,
+            alignment: Alignment.topCenter,
+          ),
+        );
+      },
     );
   }
 }

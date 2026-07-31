@@ -63,43 +63,51 @@ class AiSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final columns = isMobile ? 1 : (constraints.maxWidth > 900 ? 4 : 2);
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columns,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: isMobile ? 1.6 : 1.1,
-                ),
-                itemCount: PortfolioData.aiCapabilities.length,
-                itemBuilder: (context, index) {
-                  final cap = PortfolioData.aiCapabilities[index];
-                  return HoverCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            _iconForCapability(index),
-                            color: AppColors.textSecondary,
-                            size: 28,
-                          ),
-                          const SizedBox(height: 16),
-                          Text(cap.title, style: AppTheme.headlineSmall.copyWith(fontSize: 17)),
-                          const SizedBox(height: 8),
-                          Expanded(
-                            child: Text(
-                              cap.description,
-                              style: AppTheme.bodyMedium.copyWith(fontSize: 14),
+              final spacing = 16.0;
+              final itemWidth = columns == 1
+                  ? constraints.maxWidth
+                  : (constraints.maxWidth - spacing * (columns - 1)) /
+                      columns;
+
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
+                children: PortfolioData.aiCapabilities
+                    .asMap()
+                    .entries
+                    .map(
+                      (entry) => SizedBox(
+                        width: itemWidth,
+                        child: HoverCard(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  _iconForCapability(entry.key),
+                                  color: AppColors.textSecondary,
+                                  size: 28,
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  entry.value.title,
+                                  style: AppTheme.headlineSmall
+                                      .copyWith(fontSize: 17),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  entry.value.description,
+                                  style:
+                                      AppTheme.bodyMedium.copyWith(fontSize: 14),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    )
+                    .toList(),
               );
             },
           ),
@@ -171,42 +179,47 @@ class SkillsSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final columns = isMobile ? 1 : (constraints.maxWidth > 800 ? 4 : 2);
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columns,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: isMobile ? 2.2 : 1.3,
-                ),
-                itemCount: PortfolioData.skillGroups.length,
-                itemBuilder: (context, index) {
-                  final group = PortfolioData.skillGroups[index];
-                  return HoverCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            group.title,
-                            style: AppTheme.headlineSmall.copyWith(
-                              fontSize: 16,
-                              color: AppColors.textPrimary,
+              final spacing = 16.0;
+              final itemWidth = columns == 1
+                  ? constraints.maxWidth
+                  : (constraints.maxWidth - spacing * (columns - 1)) /
+                      columns;
+
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
+                children: PortfolioData.skillGroups
+                    .map(
+                      (group) => SizedBox(
+                        width: itemWidth,
+                        child: HoverCard(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  group.title,
+                                  style: AppTheme.headlineSmall.copyWith(
+                                    fontSize: 16,
+                                    color: AppColors.textPrimary,
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                Wrap(
+                                  spacing: 8,
+                                  runSpacing: 8,
+                                  children: group.skills
+                                      .map((s) => SkillBadge(label: s))
+                                      .toList(),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: group.skills.map((s) => SkillBadge(label: s)).toList(),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    )
+                    .toList(),
               );
             },
           ),
@@ -237,53 +250,56 @@ class TrustSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final columns = isMobile ? 2 : 4;
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columns,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: isMobile ? 1.4 : 1.6,
-                ),
-                itemCount: PortfolioData.trustSignals.length,
-                itemBuilder: (context, index) {
-                  final signal = PortfolioData.trustSignals[index];
-                  return HoverCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            signal.value,
-                            style: AppTheme.statValue(size: 36),
-                          ),
-                          const SizedBox(height: 4),
-                          Container(
-                            width: 20,
-                            height: 2,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1),
-                              gradient: LinearGradient(
-                                colors: [
-                                  AppColors.primary.withValues(alpha: 0.5),
-                                  AppColors.primary.withValues(alpha: 0.0),
-                                ],
-                              ),
+              final spacing = 16.0;
+              final itemWidth = (constraints.maxWidth - spacing * (columns - 1)) /
+                  columns;
+
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
+                children: PortfolioData.trustSignals
+                    .map(
+                      (signal) => SizedBox(
+                        width: itemWidth,
+                        child: HoverCard(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  signal.value,
+                                  style: AppTheme.statValue(size: 36),
+                                ),
+                                const SizedBox(height: 4),
+                                Container(
+                                  width: 20,
+                                  height: 2,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(1),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        AppColors.primary
+                                            .withValues(alpha: 0.5),
+                                        AppColors.primary
+                                            .withValues(alpha: 0.0),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  signal.label,
+                                  textAlign: TextAlign.center,
+                                  style: AppTheme.statLabel,
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 8),
-                          Text(
-                            signal.label,
-                            textAlign: TextAlign.center,
-                            style: AppTheme.statLabel,
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    )
+                    .toList(),
               );
             },
           ),
@@ -342,9 +358,15 @@ class TrustSection extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text(
-                            entry.duration,
-                            style: const TextStyle(color: AppColors.textMuted, fontSize: 13),
+                          Flexible(
+                            child: Text(
+                              entry.duration,
+                              textAlign: TextAlign.end,
+                              style: const TextStyle(
+                                color: AppColors.textMuted,
+                                fontSize: 13,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -397,45 +419,59 @@ class ServicesSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final columns = isMobile ? 1 : (constraints.maxWidth > 900 ? 3 : 2);
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columns,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: isMobile ? 1.8 : 1.4,
-                ),
-                itemCount: PortfolioData.services.length,
-                itemBuilder: (context, index) {
-                  final service = PortfolioData.services[index];
-                  return HoverCard(
-                    child: Padding(
-                      padding: const EdgeInsets.all(24),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                              color: AppColors.surfaceLight,
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: AppColors.borderSubtle),
+              final spacing = 16.0;
+              final itemWidth = columns == 1
+                  ? constraints.maxWidth
+                  : (constraints.maxWidth - spacing * (columns - 1)) /
+                      columns;
+
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
+                children: PortfolioData.services
+                    .map(
+                      (service) => SizedBox(
+                        width: itemWidth,
+                        child: HoverCard(
+                          child: Padding(
+                            padding: const EdgeInsets.all(24),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    color: AppColors.surfaceLight,
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: AppColors.borderSubtle,
+                                    ),
+                                  ),
+                                  child: Icon(
+                                    service.icon,
+                                    color: AppColors.textSecondary,
+                                    size: 22,
+                                  ),
+                                ),
+                                const SizedBox(height: 16),
+                                Text(
+                                  service.title,
+                                  style: AppTheme.headlineSmall
+                                      .copyWith(fontSize: 17),
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  service.description,
+                                  style:
+                                      AppTheme.bodyMedium.copyWith(fontSize: 14),
+                                ),
+                              ],
                             ),
-                            child: Icon(service.icon, color: AppColors.textSecondary, size: 22),
                           ),
-                          const SizedBox(height: 16),
-                          Text(service.title, style: AppTheme.headlineSmall.copyWith(fontSize: 17)),
-                          const SizedBox(height: 8),
-                          Text(
-                            service.description,
-                            style: AppTheme.bodyMedium.copyWith(fontSize: 14),
-                          ),
-                        ],
+                        ),
                       ),
-                    ),
-                  );
-                },
+                    )
+                    .toList(),
               );
             },
           ),

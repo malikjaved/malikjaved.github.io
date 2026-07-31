@@ -108,7 +108,7 @@ class _PrimaryButtonState extends State<PrimaryButton> {
                     widget.label,
                     maxLines: 1,
                     softWrap: false,
-                    overflow: TextOverflow.visible,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: widget.outlined
                           ? (_hovered

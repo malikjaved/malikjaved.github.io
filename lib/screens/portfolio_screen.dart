@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../Model/Method.dart';
 import '../data/portfolio_data.dart';
+import '../theme/app_breakpoints.dart';
 import '../theme/app_theme.dart';
 import '../widgets/case_study_section.dart';
 import '../widgets/contact_section.dart';
 import '../widgets/content_sections.dart';
 import '../widgets/hero_section.dart';
-import '../widgets/shared_widgets.dart';
 
 class PortfolioScreen extends StatefulWidget {
   const PortfolioScreen({super.key});
@@ -28,8 +28,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final isMobile = width < 768;
-    final isCompact = width < 1100;
+    final isMobile = width <= AppBreakpoints.mobile;
+    final isCompact = width < AppBreakpoints.compact;
 
     return Scaffold(
       body: Container(

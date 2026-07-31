@@ -33,7 +33,13 @@ class CaseStudyCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (study.imagePath != null) ...[
-          _buildImage(200),
+          Flexible(
+            flex: 0,
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 200),
+              child: _buildImage(200),
+            ),
+          ),
           const SizedBox(width: 32),
         ],
         Expanded(child: _buildContent()),
@@ -258,20 +264,26 @@ class CaseStudiesSection extends StatelessWidget {
           const SizedBox(height: 24),
           LayoutBuilder(
             builder: (context, constraints) {
-              final crossAxisCount = isMobile ? 1 : (constraints.maxWidth > 900 ? 4 : 2);
-              return GridView.count(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                crossAxisCount: crossAxisCount,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: isMobile ? 1.4 : 0.85,
+              final crossAxisCount =
+                  isMobile ? 1 : (constraints.maxWidth > 900 ? 4 : 2);
+              final spacing = 16.0;
+              final itemWidth = crossAxisCount == 1
+                  ? constraints.maxWidth
+                  : (constraints.maxWidth - spacing * (crossAxisCount - 1)) /
+                      crossAxisCount;
+
+              return Wrap(
+                spacing: spacing,
+                runSpacing: spacing,
                 children: PortfolioData.additionalProjects
                     .map(
-                      (study) => CaseStudyCard(
-                        study: study,
-                        isMobile: isMobile,
-                        compact: true,
+                      (study) => SizedBox(
+                        width: itemWidth,
+                        child: CaseStudyCard(
+                          study: study,
+                          isMobile: isMobile,
+                          compact: true,
+                        ),
                       ),
                     )
                     .toList(),
