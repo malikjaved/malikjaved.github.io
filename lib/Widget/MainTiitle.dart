@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potrtfolio/Widget/CustomText.dart';
+
+import '/Widget/CustomText.dart';
 
 class MainTiitle extends StatelessWidget {
   final String number, text;

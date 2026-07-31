@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potrtfolio/Widget/CustomText.dart';
+
+import '../Widget/CustomText.dart';
 
 class FeatureProjectMobile extends StatelessWidget {
   final String imagePath;
@@ -54,18 +55,15 @@ class FeatureProjectMobile extends StatelessWidget {
           ),
         ),
 
-        //Image
-        // Container(
-        //   decoration: BoxDecoration(
-        //       image: DecorationImage(image: AssetImage(imagePath)),
-        //       borderRadius: BorderRadius.all(Radius.circular(30))),
-        //   height: size.height * 0.60,
-        //   width: size.width * 0.5,
-        // ),
-
-        Image.asset(
-          imagePath,
-          fit: BoxFit.cover,
+        Container(
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.all(Radius.circular(15))),
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
         ),
         SizedBox(
           height: 10,

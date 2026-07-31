@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potrtfolio/Widget/work_custom_data.dart';
+
+import '/Widget/work_custom_data.dart';
 
 class MobileWorkBox extends StatelessWidget {
   @override
@@ -9,10 +10,10 @@ class MobileWorkBox extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         WorkCustomData(
-          title: "Full time & top-rated freelancer on Upwork",
+          title: "Senior Mobile Developer | Integra Scripts Pvt Ltd",
           subTitle:
-              "Flutter Developer, iOS Developer, Contract/Part Time/Full Time/Remote",
-          duration: "May - 2022 to Present",
+              "Sole/full-stack developer for AI-powered healthcare platforms.",
+          duration: "Mar - 2025 to Present",
         ),
         SizedBox(
           height: 20,
@@ -20,7 +21,7 @@ class MobileWorkBox extends StatelessWidget {
         WorkCustomData(
           title: "eezly Technologies PVT ltd (Montreal, Canada)",
           subTitle: "Lead Flutter Developer (Contractor)",
-          duration: "Dec - 2020 to May - 2022",
+          duration: "Oct - 2021 to Feb - 2025",
         ),
         SizedBox(
           height: 20,
@@ -28,7 +29,7 @@ class MobileWorkBox extends StatelessWidget {
         WorkCustomData(
           title: "AiSolve PVT ltd (Luton, UK)",
           subTitle: "Flutter Developer (Contractor)",
-          duration: "Mar - 2020 to Apr - 2022",
+          duration: "Apr - 2018 to Sep - 2021",
         ),
         SizedBox(
           height: 20,
@@ -36,7 +37,7 @@ class MobileWorkBox extends StatelessWidget {
         WorkCustomData(
           title: "Enigmatix Solutions (Bahawalpur, Pakistan)",
           subTitle: "Mobile Application Developer (Contractor: iOS & Flutter)",
-          duration: "Mar - 2016 to Mar - 2020",
+          duration: "Mar - 2016 to Mar - 2018",
         ),
         SizedBox(
           height: 20,

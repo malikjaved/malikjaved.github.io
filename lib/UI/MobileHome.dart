@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:potrtfolio/Model/Method.dart';
-import 'package:potrtfolio/UI/FeatureProjectMobile.dart';
-import 'package:potrtfolio/Widget/CustomText.dart';
-import 'package:potrtfolio/Widget/MobileWorkBox.dart';
+
+import '/UI/FeatureProjectMobile.dart';
+import '/Widget/CustomText.dart';
+import '/Widget/MobileWorkBox.dart';
+import '../Model/Method.dart';
 
 class MobileHome extends StatefulWidget {
   @override
@@ -50,7 +51,7 @@ class _MobileHomeState extends State<MobileHome> {
       //               child: Icon(Icons.person),
       //             ),
       //             accountName: Text("Muhammad Javed Iqbal"),
-      //             accountEmail: Text("its.iosdeveloper@gmail.com")),
+      //             accountEmail: Text("javedcsiub@gmail.com")),
       //         ListTile(
       //           title: Text("Share"),
       //           leading: Icon(Icons.share),
@@ -117,7 +118,7 @@ class _MobileHomeState extends State<MobileHome> {
               Center(
                 child: Container(
                   height: size.height * 0.46,
-                  //width: size.width * 0.7,
+                  // width: size.width * 0.7,
                   child: Card(
                     color: Colors.grey,
                     child: Container(
@@ -151,7 +152,7 @@ class _MobileHomeState extends State<MobileHome> {
                   ),
                   child: MaterialButton(
                     onPressed: () {
-                      method.mailTo('its.iosdeveloper@gmail.com');
+                      method.mailTo('javedcsiub@gmail.com');
                     },
                     hoverColor: Colors.green,
                     child: Text(
@@ -433,7 +434,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //1
               FeatureProjectMobile(
-                imagePath: "assets/images/food_delivery.jpg",
+                imagePath: "assets/images/food_delivery.png",
                 ontab: () {},
                 projectDesc:
                     "A Mobile app for both Android and iOS developed using Flutter.",
@@ -459,7 +460,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //2
               FeatureProjectMobile(
-                imagePath: "assets/images/grocery_app.jpg",
+                imagePath: "assets/images/grocery_app.png",
                 ontab: () {},
                 projectDesc:
                     "A Mobile app for both Android and iOS developed using Flutter.",
@@ -483,7 +484,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //3
               FeatureProjectMobile(
-                imagePath: "assets/images/health_plus.jpg",
+                imagePath: "assets/images/health_plus.png",
                 ontab: () {},
                 projectDesc:
                     "A Medical centers info & subscription based mobile app for both Android and IOS developed in Flutter",
@@ -506,7 +507,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //4
               FeatureProjectMobile(
-                imagePath: "assets/images/skoolpesa.jpg",
+                imagePath: "assets/images/skoolpesa.png",
                 ontab: () {},
                 projectDesc:
                     "A school payment gateway mobile app for both Android and iOS developed using Flutter",
@@ -527,7 +528,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //5
               FeatureProjectMobile(
-                imagePath: "assets/images/aphasia.jpg",
+                imagePath: "assets/images/aphasia.png",
                 ontab: () {},
                 projectDesc:
                     "A kids learning & training mobile app for both Android and iOS developed using Flutter",
@@ -550,7 +551,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //6
               FeatureProjectMobile(
-                imagePath: "assets/images/keech.jpg",
+                imagePath: "assets/images/keech.png",
                 ontab: () {},
                 projectDesc:
                     "A fund raising charity mobile app for both Android and iOS developed using Flutter",
@@ -571,7 +572,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //7
               FeatureProjectMobile(
-                imagePath: "assets/images/mywarid.jpg",
+                imagePath: "assets/images/mywarid.png",
                 ontab: () {},
                 projectDesc:
                     "A mobile app for a well-known former pakistan telecom brand called Warid that is now merged with Jazz developed using Swift iOS",
@@ -592,7 +593,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //8
               FeatureProjectMobile(
-                imagePath: "assets/images/actifiiy.jpg",
+                imagePath: "assets/images/actifiiy.png",
                 ontab: () {},
                 projectDesc:
                     "A local social events mobile app developed for iOS using Swift.",
@@ -608,7 +609,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //9
               FeatureProjectMobile(
-                imagePath: "assets/images/all_masajid.jpg",
+                imagePath: "assets/images/all_masajid.png",
                 ontab: () {},
                 projectDesc:
                     "An islamic mobile app developed for iOS using Swift. That displays prayer times, locate mosques, local events, qibla directions and more",
@@ -627,7 +628,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //10
               FeatureProjectMobile(
-                imagePath: "assets/images/moshpit.jpg",
+                imagePath: "assets/images/moshpit.png",
                 ontab: () {},
                 projectDesc:
                     "A local social events app developed using Swift iOS. It offers to create videos and post them on the platform to view, like for others.",
@@ -645,7 +646,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //11
               FeatureProjectMobile(
-                imagePath: "assets/images/skriply.jpg",
+                imagePath: "assets/images/skriply.png",
                 ontab: () {},
                 projectDesc:
                     "A news based mobile app developed using Swift iOS",
@@ -662,7 +663,7 @@ class _MobileHomeState extends State<MobileHome> {
 
               //12
               FeatureProjectMobile(
-                imagePath: "assets/images/chocolala.jpg",
+                imagePath: "assets/images/chocolala.png",
                 ontab: () {},
                 projectDesc:
                     "An online food delivery mobile app developed using Swift iOS",
@@ -742,7 +743,7 @@ class _MobileHomeState extends State<MobileHome> {
                                   color: Color(0xffffA8B2D1),
                                 ),
                                 Text(
-                                  'its.iosdeveloper@gmail.com',
+                                  'javedcsiub@gmail.com',
                                   style: TextStyle(
                                     color: Colors.white.withOpacity(0.4),
                                     letterSpacing: 1.75,
@@ -826,7 +827,7 @@ class _MobileHomeState extends State<MobileHome> {
                     color: Color(0xffffA8B2D1),
                     onPressed: () {
                       method.launchURL(
-                          "https://www.linkedin.com/in/muhammad-javed-iqbal-32491955/");
+                          "https://www.linkedin.com/in/javediqbal-lead-mobile-dev/");
                     },
                     iconSize: 30.0,
                   ),
@@ -856,7 +857,7 @@ class _MobileHomeState extends State<MobileHome> {
                       color: Color(0xffffA8B2D1),
                       iconSize: 30.0,
                       onPressed: () {
-                        method.mailTo('its.iosdeveloper@gmail.com');
+                        method.mailTo('javedcsiub@gmail.com');
                       }),
                   IconButton(
                       icon: FaIcon(FontAwesomeIcons.github),

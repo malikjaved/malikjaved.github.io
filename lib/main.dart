@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:potrtfolio/UI/Home.dart';
+
+import 'screens/portfolio_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const PortfolioApp());
 }
 
-class MyApp extends StatelessWidget {
+class PortfolioApp extends StatelessWidget {
+  const PortfolioApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Muhammad Javed Iqbal',
+      title: 'Muhammad Javed Iqbal — Lead Mobile Developer',
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      theme: AppTheme.darkTheme,
+      home: const PortfolioScreen(),
     );
   }
 }

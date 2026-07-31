@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:potrtfolio/Model/Method.dart';
-import 'package:potrtfolio/UI/About.dart';
-import 'package:potrtfolio/UI/FeatureProject.dart';
-import 'package:potrtfolio/UI/Work.dart';
-import 'package:potrtfolio/Widget/AppBarTitle.dart';
-import 'package:potrtfolio/Widget/CustomText.dart';
-import 'package:potrtfolio/Widget/MainTiitle.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
+
+import '/Model/Method.dart';
+import '/UI/About.dart';
+import '/UI/FeatureProject.dart';
+import '/UI/Work.dart';
+import '/Widget/AppBarTitle.dart';
+import '/Widget/CustomText.dart';
+import '/Widget/MainTiitle.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -78,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              //Mavigation Bar
+              //Navigation Bar
               Container(
                 height: size.height * 0.14,
                 width: size.width,
@@ -87,17 +88,10 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
                     children: [
-                      // IconButton(
-                      //     icon: Icon(
-                      //       Icons.change_history,
-                      //       size: 32.0,
-                      //       color: Color(0xff64FFDA),
-                      //     ),
-                      //     onPressed: () {}),
                       CircleAvatar(
                         radius: 44,
                         backgroundImage: AssetImage(
-                          "images/pp2.jpg",
+                          "assets/images/pp2.jpg",
                         ),
                       ),
                       Spacer(),
@@ -201,18 +195,10 @@ class _HomePageState extends State<HomePage> {
                           color: Color(0xffffA8B2D1),
                           onPressed: () {
                             method.launchURL(
-                                "https://www.linkedin.com/in/muhammad-javed-iqbal-32491955/");
+                                "https://www.linkedin.com/in/javediqbal-lead-mobile-dev/");
                           },
                           iconSize: 30.0,
                         ),
-                        // IconButton(
-                        //     icon: FaIcon(FontAwesomeIcons.facebook),
-                        //     color: Color(0xffffA8B2D1),
-                        //     iconSize: 30.0,
-                        //     onPressed: () {
-                        //       method.launchURL(
-                        //           "https://www.facebook.com/javedcsiub");
-                        //     }),
                         IconButton(
                             icon: FaIcon(FontAwesomeIcons.whatsapp),
                             color: Color(0xffffA8B2D1),
@@ -232,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                             color: Color(0xffffA8B2D1),
                             iconSize: 30.0,
                             onPressed: () {
-                              method.mailTo('its.iosdeveloper@gmail.com');
+                              method.mailTo('javedcsiub@gmail.com');
                             }),
                         IconButton(
                             icon: FaIcon(FontAwesomeIcons.github),
@@ -317,8 +303,7 @@ class _HomePageState extends State<HomePage> {
                                   //get in tuch text
                                   InkWell(
                                     onTap: () {
-                                      method
-                                          .mailTo('its.iosdeveloper@gmail.com');
+                                      method.mailTo('javedcsiub@gmail.com');
                                     },
                                     hoverColor:
                                         Color(0xff64FFDA).withOpacity(0.2),
@@ -410,7 +395,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //1
                                       FeatureProject(
-                                        imagePath: "images/food_delivery.jpg",
+                                        imagePath:
+                                            "assets/images/food_delivery.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A Mobile app for both Android and iOS developed using Flutter.",
@@ -437,7 +423,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //2
                                       FeatureProject(
-                                        imagePath: "images/grocery_app.jpg",
+                                        imagePath:
+                                            "assets/images/grocery_app.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A Mobile app for both Android and iOS developed using Flutter.",
@@ -461,7 +448,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //3
                                       FeatureProject(
-                                        imagePath: "images/health_plus.jpg",
+                                        imagePath:
+                                            "assets/images/health_plus.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A Medical centers info & subscription based mobile app for both Android and IOS developed in Flutter",
@@ -484,7 +472,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //4
                                       FeatureProject(
-                                        imagePath: "images/skoolpesa.jpg",
+                                        imagePath:
+                                            "assets/images/skoolpesa.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A school payment gateway mobile app for both Android and iOS developed using Flutter",
@@ -505,7 +494,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //5
                                       FeatureProject(
-                                        imagePath: "images/aphasia.jpg",
+                                        imagePath: "assets/images/aphasia.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A kids learning & training mobile app for both Android and iOS developed using Flutter",
@@ -529,7 +518,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //6
                                       FeatureProject(
-                                        imagePath: "images/keech.jpg",
+                                        imagePath: "assets/images/keech.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A fund raising charity mobile app for both Android and iOS developed using Flutter",
@@ -550,7 +539,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //7
                                       FeatureProject(
-                                        imagePath: "images/mywarid.jpg",
+                                        imagePath: "assets/images/mywarid.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A mobile app for a well-known former pakistan telecom brand called Warid that is now merged with Jazz developed using Swift iOS",
@@ -571,7 +560,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //8
                                       FeatureProject(
-                                        imagePath: "images/actifiiy.jpg",
+                                        imagePath: "assets/images/actifiiy.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A local social events mobile app developed for iOS using Swift.",
@@ -588,7 +577,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //9
                                       FeatureProject(
-                                        imagePath: "images/all_masajid.jpg",
+                                        imagePath:
+                                            "assets/images/all_masajid.png",
                                         ontab: () {},
                                         projectDesc:
                                             "An islamic mobile app developed for iOS using Swift. That displays prayer times, locate mosques, local events, qibla directions and more",
@@ -607,7 +597,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //10
                                       FeatureProject(
-                                        imagePath: "images/moshpit.jpg",
+                                        imagePath: "assets/images/moshpit.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A local social events app developed using Swift iOS. It offers to create videos and post them on the platform to view, like for others.",
@@ -625,7 +615,7 @@ class _HomePageState extends State<HomePage> {
 
                                       //11
                                       FeatureProject(
-                                        imagePath: "images/skriply.jpg",
+                                        imagePath: "assets/images/skriply.png",
                                         ontab: () {},
                                         projectDesc:
                                             "A news based mobile app developed using Swift iOS",
@@ -642,7 +632,8 @@ class _HomePageState extends State<HomePage> {
 
                                       //12
                                       FeatureProject(
-                                        imagePath: "images/chocolala.jpg",
+                                        imagePath:
+                                            "assets/images/chocolala.png",
                                         ontab: () {},
                                         projectDesc:
                                             "An online food delivery mobile app developed using Swift iOS",
@@ -678,16 +669,16 @@ class _HomePageState extends State<HomePage> {
                                       //             MainAxisAlignment.spaceAround,
                                       //         children: [
                                       //           OSImages(
-                                      //             image: "images/pic101.png",
+                                      //             image: "assets/images/pic101.png",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic103.png",
+                                      //             image: "assets/images/pic103.png",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic111.gif",
+                                      //             image: "assets/images/pic111.gif",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic113.jfif",
+                                      //             image: "assets/images/pic113.jfif",
                                       //           ),
                                       //         ],
                                       //       ),
@@ -747,16 +738,16 @@ class _HomePageState extends State<HomePage> {
                                       //             MainAxisAlignment.spaceAround,
                                       //         children: [
                                       //           OSImages(
-                                      //             image: "images/pic114.png",
+                                      //             image: "assets/images/pic114.png",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic115.png",
+                                      //             image: "assets/images/pic115.png",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic116.jfif",
+                                      //             image: "assets/images/pic116.jfif",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic117.png",
+                                      //             image: "assets/images/pic117.png",
                                       //           ),
                                       //         ],
                                       //       ),
@@ -816,16 +807,16 @@ class _HomePageState extends State<HomePage> {
                                       //             MainAxisAlignment.spaceAround,
                                       //         children: [
                                       //           OSImages(
-                                      //             image: "images/pic118.jpeg",
+                                      //             image: "assets/images/pic118.jpeg",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic119.jpeg",
+                                      //             image: "assets/images/pic119.jpeg",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic120.png",
+                                      //             image: "assets/images/pic120.png",
                                       //           ),
                                       //           OSImages(
-                                      //             image: "images/pic121.png",
+                                      //             image: "assets/images/pic121.png",
                                       //           ),
                                       //         ],
                                       //       ),
@@ -875,7 +866,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic102.gif",
+                                      //   imagePath: "assets/images/pic102.gif",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flutter-Web-SolMusic-Landing-Page");
@@ -890,7 +881,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic104.png",
+                                      //   imagePath: "assets/images/pic104.png",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flutter-UI-Kit");
@@ -905,7 +896,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic105.png",
+                                      //   imagePath: "assets/images/pic105.png",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flutter-UI-Kit");
@@ -920,7 +911,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic106.png",
+                                      //   imagePath: "assets/images/pic106.png",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flowers-Shop-Mobile-App-Store");
@@ -935,7 +926,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic107.jfif",
+                                      //   imagePath: "assets/images/pic107.jfif",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Food-Delivery-App-UI");
@@ -950,7 +941,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic108.jfif",
+                                      //   imagePath: "assets/images/pic108.jfif",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flutter-Plant-Shop-UI-Design");
@@ -965,7 +956,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic109.jfif",
+                                      //   imagePath: "assets/images/pic109.jfif",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Foody-App-UI-Design");
@@ -980,7 +971,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic110.jfif",
+                                      //   imagePath: "assets/images/pic110.jfif",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Flutter-Online-Food-Order-App-UI");
@@ -995,7 +986,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic501.png",
+                                      //   imagePath: "assets/images/pic501.png",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Ganpati-Bappa-");
@@ -1010,7 +1001,7 @@ class _HomePageState extends State<HomePage> {
                                       // ),
 
                                       // FeatureProject(
-                                      //   imagePath: "images/pic506.png",
+                                      //   imagePath: "assets/images/pic506.png",
                                       //   ontab: () {
                                       //     method.launchURL(
                                       //         "https://github.com/champ96k/Netflix-Web-Clone-Using-Flutter");
@@ -1082,7 +1073,7 @@ class _HomePageState extends State<HomePage> {
                                             color: Color(0xffffA8B2D1),
                                           ),
                                           Text(
-                                            'its.iosdeveloper@gmail.com',
+                                            'javedcsiub@gmail.com',
                                             style: TextStyle(
                                               color:
                                                   Colors.white.withOpacity(0.4),

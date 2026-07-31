@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:potrtfolio/Widget/CustomText.dart';
+
+import '/Widget/CustomText.dart';
 
 class About extends StatelessWidget {
   Widget technology(BuildContext context, String text) {
@@ -260,43 +261,20 @@ class _CustomImageAnimationState extends State<CustomImageAnimation> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    // return MouseRegion(
-    //   onEnter: _incrementEnter,
-    //   onHover: _updateLocation,
-    //   onExit: _incrementExit,
-    //   child: Stack(
-    //     children: [
-    //       Container(
-    //         height: size.height / 2,
-    //         width: size.width / 5,
-    //         color: Colors.black54,
-    //         child: Image(
-    //           fit: BoxFit.cover,
-    //           image: AssetImage("images/pp2.jpg"),
-    //         ),
-    //       ),
-    //       Container(
-    //         height: size.height / 2,
-    //         width: size.width / 5,
-    //         color: customImageColor,
-    //       ),
-    //     ],
-    //   ),
-    // );
 
     return Stack(
       children: [
         Container(
-          height: size.height / 2,
+          height: size.height / 1.5,
           width: size.width / 5,
           color: Colors.black54,
           child: Image(
             fit: BoxFit.cover,
-            image: AssetImage("images/pp2.jpg"),
+            image: AssetImage("assets/images/pp2.jpg"),
           ),
         ),
         Container(
-          height: size.height / 2,
+          height: size.height / 1.5,
           width: size.width / 5,
           color: Colors.transparent,
         ),

@@ -1,15 +1,13 @@
-import 'dart:io';
-
-import 'package:flutter/widgets.dart';
+import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Method {
-  launchURL(String link) async {
-    var url = link;
-    if (await canLaunch(url)) {
-      await launch(url);
+  Future<void> launchURL(String link) async {
+    final uri = Uri.parse(link);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
-      throw 'Could not launch $url';
+      debugPrint('Could not launch $link');
     }
   }
 
@@ -18,45 +16,48 @@ class Method {
     String subject = '',
     String message = '',
   }) async {
-    String url = 'mailto:$email?subject=$subject&body=$message';
+    final uri = Uri(
+      scheme: 'mailto',
+      path: email,
+      queryParameters: {
+        if (subject.isNotEmpty) 'subject': subject,
+        if (message.isNotEmpty) 'body': message,
+      },
+    );
 
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       debugPrint('Couldn\'t send email');
     }
   }
 
   Future<void> openWebPage(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     } else {
       debugPrint('Couldn\'t open web page');
     }
   }
 
   Future<void> phoneTo(String phoneNumber) async {
-    final url = 'tel:$phoneNumber';
+    final uri = Uri(scheme: 'tel', path: phoneNumber);
 
-    if (await canLaunch(url)) {
-      await launch(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       debugPrint('Couldn\'t make phone call');
     }
   }
 
   Future<void> whatsappTo(String phoneNumber) async {
-    final urlAndroid = 'whatsapp://send?phone=$phoneNumber';
-    final urlIOS = 'https://wa.me/$phoneNumber';
+    final uri = kIsWeb
+        ? Uri.parse('https://wa.me/$phoneNumber')
+        : Uri.parse('whatsapp://send?phone=$phoneNumber');
 
-    if (Platform.isIOS) {
-      if (await canLaunch(urlIOS)) {
-        await launch(urlIOS);
-      }
-    } else {
-      if (await canLaunch(urlAndroid)) {
-        await launch(urlAndroid);
-      }
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
   }
 }
